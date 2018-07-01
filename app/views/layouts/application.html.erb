@@ -39,15 +39,21 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
+            <% if logged_in? %>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <%= link_to "Profile", user_path(current_user.id) %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
+              <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+            </li>
+            <% else %>
+            <li class="nav-item">
+              <%= link_to "Sign up", sign_up_path %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <%= link_to "Login", sign_in_path %>
             </li>
+            <% end %>
           </ul>
         </div>
       </div>
